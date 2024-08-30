@@ -4,19 +4,19 @@
             <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
             <h4>InvestMate</h4>
         </div>
-            <ul>
-                <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
-                <li><a routerLink="/portfolio">Portfolio</a></li>
-                <!-- <li><a (click)="logout()">Logout</a></li> -->
-            </ul>
-    </nav>
+        <ul>
+          <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
+          <li><a class="text-decoration-none" [routerLink]="['/portfolio']">Portfolio</a></li>
+          <!-- <li><a (click)="logout()">Logout</a></li> -->
+        </ul>
+      </nav>
     <div class='dashboard-header'>
         <div class='dashboard-header-title'>Welcome, {{userDetails?.firstName}} {{userDetails?.lastName}}  to InvestMate </div>
         <div class='dashboard-header-caption'>**Caption**</div>
     </div>
     <div class='dashboard-body'>
-        
-
+       
+ 
         <!-- LEFT SECTION -->
         <div class='dashboard-body-left-section'>
             <div class='dashboard-portfolio-container'>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- RIGHT SECTION -->
         <div class='dashboard-body-right-section'>
             <ng-container *ngIf="loading; else content">
@@ -62,7 +62,7 @@
             </ng-container>
             <ng-template #content>
                 <div style="display: flex; gap: 30px;">
-                    
+                   
                     <div class='dashboard-top-coins-container'>
                         <div class='dashboard-body-title'>Top Cryptocurrencies by Market</div>
                         <mat-table [dataSource]="marketData" (matRowClick)="handleRowClick($event)">
