@@ -1,0 +1,100 @@
+h1 {
+    font-size: 28px; /* Adjusted font size */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #343a40; /* Dark text color for good contrast */
+    text-align: center; /* Center-align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    padding: 10px; /* Padding for a bit of space around the heading */
+    border-bottom: 2px solid #e9ecef; /* Bottom border to separate from content */
+    background-color: #ffffff; /* White background for a clean look */
+    border-radius: 10px; /* Rounded corners for consistency with cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+.stock-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  .stock-card {
+    width: 100%;
+    max-width: 700px; /* Increased width */
+    height: 120px; /* Reduced height */
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* White card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .stock-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+  }
+  
+  .stock-image {
+    width: 120px; /* Adjusted width */
+    height: 120px; /* Adjusted height to match card height */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .stock-info {
+    padding: 10px; /* Reduced padding for more compact design */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .stock-symbol {
+    font-size: 22px; /* Adjusted font size */
+    font-weight: bold;
+    color: #343a40; /* Dark text color */
+    margin-bottom: 5px;
+  }
+  
+  .stock-name {
+    font-size: 16px; /* Adjusted font size */
+    color: #6c757d; /* Muted text color */
+    margin-bottom: 5px;
+  }
+  
+  .stock-price {
+    font-size: 18px; /* Adjusted font size */
+    font-weight: bold;
+    color: #28a745; /* Green color for price */
+    margin-bottom: 5px;
+  }
+  
+  .stock-market-cap {
+    font-size: 14px; /* Adjusted font size */
+    color: #6c757d; /* Muted text color */
+  }
+  
+  @media (max-width: 600px) {
+    .stock-card {
+      flex-direction: column;
+      align-items: center;
+      height: auto; /* Allow height to adjust on smaller screens */
+    }
+  
+    .stock-image {
+      width: 100%;
+      height: auto; /* Adjust height for responsive design */
+      border-radius: 10px 10px 0 0;
+    }
+  
+    .stock-info {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
