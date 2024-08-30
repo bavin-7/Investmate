@@ -1,0 +1,122 @@
+/* No Portfolio Container */
+.no-portfolio-container {
+    text-align: center;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .no-portfolio-heading {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .no-portfolio-message {
+    display: block;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .create-portfolio-button {
+    margin-top: 15px;
+    padding: 12px 24px;
+  }
+  
+  /* Portfolio Container */
+  .portfolio-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .sidebar-portfolio-container {
+    padding: 24px ;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 32px 48px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .add-portfolio-button {
+    
+    color: #3f51b5;
+    border: 1px solid #3f51b5;
+    border-radius: 4px;
+  }
+  
+  .mat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .mat-list-item:last-child {
+    border-bottom: none;
+  }
+  
+  .portfolio-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+  
+  .portfolio-item-content {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .portfolio-item-info {
+    flex: 1;
+  }
+  
+  .portfolio-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .selected-portfolio-title {
+    font-weight: 500;
+    color: #3f51b5; /* Primary color */
+  }
+  
+  .selected-portfolio-line {
+    color: #888;
+  }
+  
+  .portfolio-item-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .action-button {
+    color: #333;
+  }
+  
+  .action-button:hover {
+    color: #3f51b5; /* Primary color */
+  }
+  
+  /* Adjust router-outlet margin */
+  router-outlet {
+    margin-top: 20px;
+  }
+  

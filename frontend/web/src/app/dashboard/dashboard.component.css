@@ -1,32 +1,53 @@
-
-.navbar {
-  background-color: #333;
-  overflow: hidden;
-}
-
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.navbar li {
-  padding: 14px 20px;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-}
-
 .dashboard-container {
-  width: calc(100%);
+  width: calc(100% - 100px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 35px;
   padding: 35px;
+}
+
+/* .logo-container {
+  position: absolute; Allows positioning of the logo
+  top: 10px;
+  left: 10px; Adjust the distance from the right
+} */
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+h4{
+  font-style: italic;
+}
+
+.navbar {
+  margin-top: -35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+}
+
+.navbar ul {
+  background-color: rgb(227, 99, 210);
+  border-radius: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+.navbar li {
+padding: 14px 20px;
+}
+
+.navbar a {
+color: white;
+text-decoration: none;
 }
 
 .dashboard-header {
@@ -45,7 +66,7 @@
 .dashboard-header-caption {
   font-size: 13px;
   font-weight: 500;
-  color: #00fbff;
+  color: #0658f6;
   text-align: center;
 }
 
@@ -54,11 +75,11 @@
   gap: 20px;
 }
 
-.dashboard-body-left-section {
+.dashboard-body-right-section {
   width: 75%;
 }
 
-.dashboard-body-right-section {
+.dashboard-body-left-section {
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -162,7 +183,7 @@
   flex-direction: column;
   gap: 15px;
   border-radius: 10px;
-  background: #0658f6;
+  background: #ff00d0;
   padding: 25px 20px;
 }
 
@@ -215,6 +236,13 @@
   background-color: #f3f7ff;
   border: 1px solid #6296ff;
 }
+
+/* Add hover effect to mat-table rows */
+mat-row:hover {
+  background-color: #f3f7ff;
+  border: 1px solid #6296ff;
+}
+
 
 .trending-card-header {
   display: flex;
