@@ -1,76 +1,117 @@
+/* Stock Detail Container */
 .stock-detail-container {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 2rem;
-    background-color: #f9f9f9;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8e2c8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  height: 100%;
+  width: 100%;
+}
+
+/* Stock Info Card Styling */
+.stock-info {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin: 0 auto;
+  width: 30%;
+  margin-left: 5%;
+}
+
+/* Stock Info Image Styling */
+.stock-info img {
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* Stock Info Title Styling */
+.stock-info h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: brown;
+  margin: 0;
+}
+
+/* Stock Info Text Styling */
+.stock-info p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Price Up and Down Styling */
+.stock-info .price-up {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.stock-info .price-down {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
   .stock-info {
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 30%;
-  }
-  
-  .stock-info img {
-    border-radius: 50%;
-    margin-bottom: 1rem;
-  }
-  
-  .stock-info h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-  
-  .stock-info p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 0.3rem;
-  }
-  
-  .chart-container {
-    flex-grow: 1;
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  canvas {
-    width: 100% !important;
-    height: 400px !important;
-  }
-  
-  p.price-up {
-    color: green;
-    font-weight: bold;
-  }
-  
-  p.price-down {
-    color: red;
-    font-weight: bold;
+    padding: 15px;
+    max-width: 90%;
   }
 
-  @media (max-width: 768px) {
-    .stock-detail-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .stock-info {
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-  
-    .chart-container {
-      width: 100%;
-    }
+  .stock-info h2 {
+    font-size: 18px;
   }
-  
-  
+
+  .stock-info p {
+    font-size: 12px;
+  }
+}
+
+
+/* Chart Container Styling */
+.chart-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+/* Canvas Styling */
+.chart-container canvas {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .stock-detail-container {
+    padding: 15px;
+  }
+
+  .stock-info h2 {
+    font-size: 18px;
+  }
+
+  .stock-info p {
+    font-size: 12px;
+  }
+
+  .chart-container {
+    padding: 15px;
+  }
+}

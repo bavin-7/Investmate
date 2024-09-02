@@ -20,7 +20,7 @@ import com.Natwest.project.user.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class UserController {
 
     private final UserService userService;

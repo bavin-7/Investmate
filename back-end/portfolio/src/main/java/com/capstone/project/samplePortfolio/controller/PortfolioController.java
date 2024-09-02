@@ -23,6 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/portfolio") // Base URL for the controller
+@CrossOrigin
 public class PortfolioController {
 
     @Autowired

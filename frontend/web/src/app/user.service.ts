@@ -9,6 +9,7 @@ import { LoginRequest } from '../app/login-request.model';
   providedIn: 'root'
 })
 export class UserService {
+  [x: string]: any;
   private baseUrl = 'http://localhost:9003/users';  // Adjust based on your backend URL
 
   constructor(private http: HttpClient) {}

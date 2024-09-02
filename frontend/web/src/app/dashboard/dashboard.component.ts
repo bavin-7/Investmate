@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../user.service';  // Import the UserService
+import { User } from '../user.model';
 //import { MatTableDataSource } from '@angular/material/table';
  
 @Component({
@@ -15,14 +17,19 @@ import { Router, RouterLink } from '@angular/router';
   imports: [MatProgressSpinnerModule, MatTableModule, MatIconModule, CommonModule,RouterLink],
 })
 export class DashboardComponent implements OnInit {
+
   trendingData: any[] = [];
   marketData: any[] = [];
   portfolioData: any[] = [];
   userDetails: any;
   loading = false;
   displayedColumns: string[] = ['rank', 'name', 'price', 'change24h', 'change7d'];
+
+  dropdownOpen = false; // Add this line
+  isDropdownVisible = false;
+  showUserDetailsDialog: boolean = false;  // Variable to control the dialog visibility
  
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
  
   ngOnInit(): void {
     this.loading = true;
@@ -35,7 +42,7 @@ export class DashboardComponent implements OnInit {
     // Fetch market data
     const marketUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h,7d';
     this.http.get(marketUrl).subscribe((response: any) => {
-      this.marketData = response.slice(0, 10);
+      this.marketData = response.slice(0, 20);
     });
  
     // Fetch user details
@@ -60,14 +67,60 @@ export class DashboardComponent implements OnInit {
   }
  
   handleRowClick(row: any): void {
-    this.router.navigate([`/market/stock/${row.id}`], { state: row });
+    this.router.navigate([`/stock/${row.id}`], { state: row });
   }
  
- 
+  navigateToCoinDetail(coin: any): void {
+    // Navigate using the coin id to match the stock route parameter
+    this.router.navigate([`/stock/${coin.id}`], { state: { coin } });
+  }
  
   formatPercentage(value: number): string {
     return Math.abs(value).toFixed(2);
   }
+
+  // Toggle dropdown function
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  // Logout function
+  logout(): void {
+    sessionStorage.clear(); // Clear session storage or any other logout logic
+    this.router.navigate(['/login']); // Navigate to the login page or wherever needed
+  }
+
+  // viewUserDetails function
+  viewUserDetails(): void {
+    this.isDropdownVisible = false;
+    this.router.navigate(['/user-details']);
+  }
+
+
+  openUserDetailsDialog() {
+    const userId = sessionStorage.getItem('userId');  // Retrieve the stored user ID
+    if (userId) {
+      this.userService.getUserById(userId).subscribe({
+        next: (user: User) => {
+          this.userDetails = user;  // Store fetched user details
+          this.showUserDetailsDialog = true;  // Show the dialog
+          console.log('User details fetched successfully:', user);
+        },
+        error: (error: any) => {
+          console.error('Error fetching user details:', error);
+        }
+      });
+    } else {
+      console.error('User ID not found in session storage');
+    }
+  }
+
+
+  closeUserDetailsDialog() {
+    this.showUserDetailsDialog = false;  // Hide the dialog
+    this.userDetails = null;  // Clear user details
+  }
+
 }
  
 

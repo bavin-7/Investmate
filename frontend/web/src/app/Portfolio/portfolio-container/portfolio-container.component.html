@@ -71,7 +71,7 @@
       <mat-list-item *ngFor="let portfolio of portfolios; let i = index"
                      [ngClass]="{'selected-portfolio': selectedIndex === i}"
                      class="mat-list-item">
-        <img matListItemAvatar [src]="'https://avatars.dicebear.com/api/initials/' + portfolio.investmentAgenda + '.svg'" alt="Avatar" class="portfolio-avatar">
+        <!-- <img matListItemAvatar [src]="'https://avatars.dicebear.com/api/initials/' + portfolio.investmentAgenda + '.svg'" alt="Avatar" class="portfolio-avatar"> -->
         <div class="portfolio-item-content">
           <div (click)="handleListItemClick(i)" class="portfolio-item-info">
             <a [routerLink]="['/portfolio/stock', portfolio.portfolioId]" class="portfolio-link">

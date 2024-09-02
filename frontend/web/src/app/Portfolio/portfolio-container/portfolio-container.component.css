@@ -70,13 +70,6 @@
     border-bottom: none;
   }
   
-  .portfolio-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-right: 16px;
-  }
-  
   .portfolio-item-content {
     display: flex;
     flex: 1;
@@ -95,7 +88,7 @@
   
   .selected-portfolio-title {
     font-weight: 500;
-    color: #3f51b5; /* Primary color */
+    color: #3f51b5; 
   }
   
   .selected-portfolio-line {
@@ -112,7 +105,7 @@
   }
   
   .action-button:hover {
-    color: #3f51b5; /* Primary color */
+    color: #3f51b5; 
   }
   
   /* Adjust router-outlet margin */

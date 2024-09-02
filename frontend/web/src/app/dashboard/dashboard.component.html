@@ -5,18 +5,50 @@
             <h4>InvestMate</h4>
         </div>
         <ul>
-          <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
-          <li><a class="text-decoration-none" [routerLink]="['/portfolio']">Portfolio</a></li>
-          <!-- <li><a (click)="logout()">Logout</a></li> -->
+            <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
+            <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
+            <!-- <li><a (click)="logout()">Logout</a></li> -->
+
+            <!-- Profile Avatar Section -->
+            <!-- User profile dropdown button -->
+            <li class="dropdown" style="margin-left:-40px ;">
+                <div class="profile-avatar" (click)="toggleDropdown()">
+                    <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
+                </div>
+                <div class="dropdown-menu" [class.show]="dropdownOpen">
+                <a (click)="openUserDetailsDialog()">User Details</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
         </ul>
-      </nav>
+    </nav>
+
+    <!-- User Details Dialog -->
+    <div *ngIf="showUserDetailsDialog" class="dialog-overlay">
+        <div class="dialog-content">
+            <h2>User Details:</h2>
+            <div *ngIf="userDetails">
+                <p><strong>Username:</strong> {{ userDetails.username }}</p>
+                <p><strong>Email:</strong> {{ userDetails.email }}</p>
+                <p><strong>First Name:</strong> {{ userDetails.firstName }}</p>
+                <p><strong>Last Name:</strong> {{ userDetails.lastName }}</p>
+                <p><strong>Date of Birth:</strong> {{ userDetails.dateOfBirth | date }}</p>
+                <p><strong>Address:</strong> {{ userDetails.address }}</p>
+                <p><strong>Phone Number:</strong> {{ userDetails.phoneNumber }}</p>
+                <p><strong>Registration Date:</strong> {{ userDetails.registrationDate | date }}</p>
+            </div>
+            <button (click)="closeUserDetailsDialog()">Close</button>
+        </div>
+    </div>
+  
     <div class='dashboard-header'>
         <div class='dashboard-header-title'>Welcome, {{userDetails?.firstName}} {{userDetails?.lastName}}  to InvestMate </div>
         <div class='dashboard-header-caption'>**Caption**</div>
     </div>
+    
+    <!-- DASHBOARD BODY -->
     <div class='dashboard-body'>
-       
- 
+
         <!-- LEFT SECTION -->
         <div class='dashboard-body-left-section'>
             <div class='dashboard-portfolio-container'>
@@ -32,7 +64,7 @@
                         <div style="display: flex; flex-direction: column; width: 100%;">
                             <div class='portfolio-header'>{{portfolio.portfolioName}}</div>
                             <div class='portfolio-body'>
-                                <div class='portfolio-body-balance'>${{portfolio.totalBalance.toFixed(2)}}</div>
+                                <div class='portfolio-body-balance'>${{portfolio.totalBalance.toFixed(4)}}</div>
                                 <div [ngClass]="{'portfolio-body-returns-gain': portfolio.totalReturns > 0, 'portfolio-body-returns-loss': portfolio.totalReturns <= 0}">
                                     {{portfolio.totalReturns > 0 ? '+' : '-'}}${{numberWithCommas(portfolio.totalReturns)}}
                                   </div>
@@ -64,7 +96,7 @@
                 <div style="display: flex; gap: 30px;">
                    
                     <div class='dashboard-top-coins-container'>
-                        <div class='dashboard-body-title'>Top Cryptocurrencies by Market</div>
+                        <div class='dashboard-body-title'>Top Cryptocurrencies</div>
                         <mat-table [dataSource]="marketData" (matRowClick)="handleRowClick($event)">
                             <ng-container matColumnDef="rank">
                                 <mat-header-cell *matHeaderCellDef>Rank #</mat-header-cell>
@@ -109,14 +141,14 @@
                     <div class='dashboard-trending-container'>
                         <div class='dashboard-body-title'>Top Trending Coins </div>
                         <div class='dashboard-trending-cards'>
-                            <div class='dashboard-trending-card' *ngFor="let coin of trendingData">
+                            <div class='dashboard-trending-card' *ngFor="let coin of trendingData" (click)="navigateToCoinDetail(coin)">
                                 <div class='trending-card-header'>
                                     <div class='trending-card-header-image'>
                                         <img [src]="coin.large" alt="{{coin.name}}" height="25"/>
                                     </div>
                                     <div style="display: flex; flex-direction: column;">
                                         <div style="font-weight: 600; color: #0658f6; font-size: 13px;">{{coin.name}}</div>
-                                        <div style="margin-top: -5px; text-transform: uppercase; font-weight: 600; color: #828282; font-size: 11px;">
+                                        <div style="margin-top: -5px; font-weight: 600; color: #828282; font-size: 11px;">
                                             {{coin.symbol}}
                                         </div>
                                     </div>

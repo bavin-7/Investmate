@@ -1,30 +1,19 @@
-<!-- <p>stock-detail works!</p>
-<div *ngIf="stock" class="stock-detail">
-    <img [src]="stock.image" alt="{{stock.name}}" width="100">
-    <h2>{{stock.name}} ({{stock.symbol}})</h2>
-    <p>Price: ₹{{stock.current_price}}</p>
-    <p>Market Cap: ₹{{stock.market_cap}}</p>
-    <p>ATH: ₹{{stock.ath}} ({{stock.ath_change_percentage}}%)</p>
-    <p>ATL: ₹{{stock.atl}} ({{stock.atl_change_percentage}}%)</p>
-    <p>Last Updated: {{stock.last_updated}}</p>
-</div> -->
-
 <div *ngIf="stock" class="stock-detail-container">
     <div class="stock-info">
       <img [src]="stock.image" alt="{{stock.name}}" width="100">
       <h2>{{ stock.name }} ({{ stock.symbol }})</h2>
-      <p>Price: {{ stock.current_price | currency: 'USD' }}</p>
+      <p>Price: {{ stock.current_price | currency: 'INR' }}</p>
       <p>Market Cap: {{ stock.market_cap | number }}</p>
-      <p>High 24h: {{ stock.high_24h | currency: 'USD' }}</p>
-      <p>Low 24h: {{ stock.low_24h | currency: 'USD' }}</p>
+      <p>High 24h: {{ stock.high_24h | currency: 'INR' }}</p>
+      <p>Low 24h: {{ stock.low_24h | currency: 'INR' }}</p>
       <p [ngClass]="{'price-up': stock.price_change_percentage_24h > 0, 'price-down': stock.price_change_percentage_24h < 0}">
-        Price Change Percentage 24h: {{ stock.price_change_percentage_24h | percent }}
+        Price Change Percentage 24h: {{ stock.price_change_percentage_24h}}%
       </p>
     </div>
   
     <div class="chart-container">
       <canvas #stockChart></canvas>
     </div>
-  </div>
+</div>
   
   

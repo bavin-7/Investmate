@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
   emailError: boolean = false;
   passwordError: boolean = false;
   loginError: string | null = null;
+  userDetails: User | null = null;  // User details object to store fetched data
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -47,6 +49,21 @@ export class LoginComponent {
     } else {
       this.loginError = 'Validation failed. Please enter a valid email and password.';
       console.error(this.loginError);
+    }
+  }
+
+  fetchUserDetails() {
+    const userId = sessionStorage.getItem('userId');  // Retrieve the stored user ID
+    if (userId) {
+      this.userService.getUserById(userId).subscribe({
+        next: (user: User) => {
+          this.userDetails = user;  // Store fetched user details
+          console.log('User details fetched successfully:', user);
+        },
+        error: (error: any) => {
+          console.error('Error fetching user details:', error);
+        }
+      });
     }
   }
 }
