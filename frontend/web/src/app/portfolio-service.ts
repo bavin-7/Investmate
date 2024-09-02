@@ -31,9 +31,13 @@ export class PortfolioService {
     return this.http.get<Portfolio>(`${this.apiUrl}/get/${portfolioId}`);
   }
 
-  getAllStocks(portfolioId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getAllStocks/${portfolioId}`);
+
+
+  getAllStocks(portfolioId: string): Observable<{ stockDetails: any[] }> {
+    return this.http.get<{ stockDetails: any[] }>(`${this.apiUrl}/getAllStocks?portfolioId=${portfolioId}`);
   }
+  
+  
 
   // buyStock(portfolioId: string, stockId: string, quantity: number): Observable<any> {
   //   const url = `${this.apiUrl}/buyStock/${portfolioId}?stockId=${stockId}&quantity=${quantity}`;

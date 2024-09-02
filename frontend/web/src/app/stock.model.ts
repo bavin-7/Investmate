@@ -3,6 +3,12 @@ export interface Sparkline {
 }
 
 export interface Stock {
+    stockId: any;
+    stockName: any;
+    stockSymbol: any;
+    stockImage: any;
+    currentPrice: any;
+    priceChangePercentage24h: any;
     id: string;
     symbol: string;
     name: string;

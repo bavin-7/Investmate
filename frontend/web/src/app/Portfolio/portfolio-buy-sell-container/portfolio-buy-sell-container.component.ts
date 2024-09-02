@@ -22,7 +22,9 @@ export class PortfolioBuySellContainerComponent implements OnInit {
   portfolio: Portfolio | undefined;
   stocks: PortfolioStock[] = [];
   stockToBuy: PortfolioStock | undefined;
+  stockToSell: PortfolioStock | undefined;
   quantityToBuy: number = 0;
+  quantityToSell: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,44 +41,51 @@ export class PortfolioBuySellContainerComponent implements OnInit {
   loadPortfolio(): void {
     this.portfolioService.getPortfolioById(this.portfolioId).subscribe(portfolio => {
       this.portfolio = portfolio;
-  
+
       // Map backend response to PortfolioStock model
       this.stocks = (portfolio.stocks ?? []).map(stock => {
-        const currentPrice = stock.current_price; // Assuming you have a way to get current price
-        const holdings = stock.quantity;
-        const returns = holdings * (currentPrice - stock.avgBuyPrice);
-  
+        const avgBuyPrice = stock.avgBuyPrice ?? 0;
+        const holdings = stock.quantity ?? 0;
+
+        const totalCostBasis = avgBuyPrice * holdings;
+        const currentValue = stock.currentPrice * holdings;
+        const returns = currentValue - totalCostBasis;
+
         return {
           stockId: stock.stockId,
           stockName: stock.stockName,
           stockSymbol: stock.stockSymbol,
           stockImage: stock.stockImage,
-          currentPrice: currentPrice,
-          priceChangePercentage24h: stock.priceChangePercentage24h || 0,
+          currentPrice: stock.currentPrice ?? 0,
+          priceChangePercentage24h: stock.priceChangePercentage24h ?? 0,
           holdings: holdings,
-          avgBuyPrice: stock.avgBuyPrice,
+          avgBuyPrice: avgBuyPrice,
           returns: returns,
           quantity: holdings,
-          current_price: currentPrice // Add this line to match PortfolioStock interface
+          current_price: stock.currentPrice // Ensure this is used correctly if needed
         };
       });
-    });  }
+    });
+  }
 
   loadStocks(): void {
-    this.stockService.getAllStocks().subscribe(stocks => {
-      this.stocks = stocks.map(stock => ({
-        stockId: stock.id,
-        stockName: stock.name,
-        stockSymbol: stock.symbol,
-        stockImage: stock.image,
-        currentPrice: stock.current_price,
-        priceChangePercentage24h: stock.price_change_percentage_24h,
-        holdings: 0,
-        avgBuyPrice: 0,
-        returns: 0,
-        quantity: 0,
-        current_price: stock.current_price
-      }));
+    this.portfolioService.getAllStocks(this.portfolioId).subscribe(data => {
+      if (data && data.stockDetails) {
+        this.stocks = data.stockDetails.map(detail => ({
+          stockId: detail.stock.stockId,
+          stockName: detail.stock.stockName,
+          stockSymbol: detail.stock.stockSymbol,
+          stockImage: detail.stock.stockImage,
+          currentPrice: detail.currentPrice,
+          priceChangePercentage24h: detail.priceChangePercentage24h,
+          holdings: detail.stock.quantity,
+          avgBuyPrice: detail.stock.avgBuyPrice,
+          returns: detail.returns,
+          quantity: detail.stock.quantity
+        }));
+      } else {
+        console.warn('No stock details found.');
+      }
     });
   }
 
@@ -92,6 +101,17 @@ export class PortfolioBuySellContainerComponent implements OnInit {
       alert('Please select a stock and enter a valid quantity.');
     }
   }
+
+  sellStock(): void {
+    if (this.stockToSell?.stockId && this.quantityToSell > 0) {
+      this.portfolioService.sellStock(this.portfolioId, this.stockToSell.stockId, this.quantityToSell)
+        .subscribe(response => {
+          this.loadPortfolio(); // Refresh the portfolio after selling
+          this.quantityToSell = 0; // Reset the quantity input
+          alert('Stock sold successfully!');
+        });
+    } else {
+      alert('Please select a stock and enter a valid quantity.');
+    }
+  }
 }
-
-

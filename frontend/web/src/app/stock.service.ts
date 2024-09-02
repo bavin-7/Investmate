@@ -13,7 +13,7 @@ export class StockService {
 
   constructor(private http: HttpClient) { }
 
-  getAllStocks(): Observable<Stock[]> {
+  getAllStocks(portfolioId?: string): Observable<Stock[]> {
       return this.http.get<Stock[]>(`${this.apiUrl}/all`);
   }
 

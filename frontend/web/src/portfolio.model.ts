@@ -15,7 +15,7 @@ export interface Portfolio {
     stockName: string;
     stockSymbol: string;
     stockImage: string;
-    current_price: number; // Ensure this is the correct property name
+    currentPrice: number; // Should match the backend 'currentPrice'
     priceChangePercentage24h: number;
     holdings: number;
     avgBuyPrice: number;
