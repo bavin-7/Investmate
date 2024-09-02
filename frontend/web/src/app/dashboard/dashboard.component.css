@@ -1,75 +1,87 @@
+/* Container styling */
 .dashboard-container {
-  width: calc(100% - 100px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 35px;
   padding: 35px;
+  background-color: #f4f4f4; /* Light gray background for the main container */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-/* .logo-container {
-  position: absolute; Allows positioning of the logo
+/* Logo styling */
+.logo-container {
+  position: absolute;
   top: 10px;
-  left: 10px; Adjust the distance from the right
-} */
+  left: 10px;
+}
 
 .logo {
   width: 100px;
-  height: 100px;
+  height: auto; /* Maintain aspect ratio */
 }
 
-h4{
+/* Header and Navbar styling */
+h4 {
   font-style: italic;
+  color: #333; /* Darker color for better readability */
 }
 
 .navbar {
+  width: 100%;
   margin-top: -35px;
-  overflow: hidden;
+  
   display: flex;
   flex-direction: row;
-  gap: 50px;
   align-items: center;
+  gap: 50px;
 }
 
 .navbar ul {
-  background-color: rgb(227, 99, 210);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 20px;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   width: 100%;
+  align-items: stretch;
+  justify-content: stretch;
+  align-content: stretch;
+  justify-items: stretch;
 }
 
 .navbar li {
-padding: 14px 20px;
+  padding: 14px 20px;
+  width: 100%;
 }
 
 .navbar a {
-color: white;
-text-decoration: none;
+  color: #333; /* Darker text for contrast */
+  text-decoration: none;
+  padding: 14px 20px;
 }
 
+/* Dashboard header styling */
 .dashboard-header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .dashboard-header-title {
   font-size: 25px;
   font-weight: 600;
-  color: #ff00d0;
+  color: #333; /* Darker title color */
 }
 
 .dashboard-header-caption {
   font-size: 13px;
   font-weight: 500;
-  color: #0658f6;
-  text-align: center;
+  color: #666; /* Gray for subtitle */
 }
 
+/* Body styling */
 .dashboard-body {
   display: flex;
   gap: 20px;
@@ -86,6 +98,7 @@ text-decoration: none;
   gap: 25px;
 }
 
+/* Portfolio container styling */
 .dashboard-portfolio-container {
   display: flex;
   flex-direction: column;
@@ -101,19 +114,19 @@ text-decoration: none;
 .dashboard-body-title {
   font-weight: 600;
   font-size: 15px;
-  color: #2c2c2c;
+  color: #333; /* Consistent dark text color */
 }
 
 .dashboard-body-link {
   font-size: 12px;
   font-weight: 700;
-  color: #0658f6;
+  color: #007bff; /* Standard blue link color */
   cursor: pointer;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 .dashboard-body-link:hover {
-  color: #4b7ee6;
+  color: #0056b3; /* Darker blue on hover */
 }
 
 .dashboard-portfolio-cards {
@@ -123,24 +136,24 @@ text-decoration: none;
 }
 
 .dashboard-portfolio-card {
-  background-color: #eff2f5;
+  background-color: #ffffff; /* White background for card */
   border-radius: 10px;
   padding: 12px 15px;
   display: flex;
   align-items: center;
   gap: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 
 .dashboard-portfolio-card:hover {
-  background-color: #e7ebee;
+  background-color: #f8f9fa; /* Slightly darker background on hover */
 }
 
 .portfolio-header {
   font-size: 14px;
   font-weight: 600;
-  color: #778296;
+  color: #555; /* Medium gray for text */
 }
 
 .portfolio-body {
@@ -152,19 +165,11 @@ text-decoration: none;
 .portfolio-body-balance {
   font-weight: 700;
   font-size: 22px;
-  color: #2c2c2c;
+  color: #333;
 }
 
 .portfolio-body-returns-gain {
-  background-color: #16c784;
-  border-radius: 8px;
-  padding: 5px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
-}
-.portfolio-body-returns-loss {
-  background-color: #EA3943;
+  background-color: #28a745; /* Standard green for gains */
   border-radius: 8px;
   padding: 5px;
   font-size: 12px;
@@ -172,6 +177,16 @@ text-decoration: none;
   color: white;
 }
 
+.portfolio-body-returns-loss {
+  background-color: #dc3545; /* Standard red for losses */
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+/* Learn container styling */
 .dashboard-learn-container {
   display: flex;
   flex-direction: column;
@@ -183,19 +198,19 @@ text-decoration: none;
   flex-direction: column;
   gap: 15px;
   border-radius: 10px;
-  background: #ff00d0;
+  background: #e9ecef; /* Light gray background */
   padding: 25px 20px;
 }
 
 .learn-body-content {
   font-size: 13px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
 }
 
 .learn-body-button {
-  background-color: white;
-  color: #0658f6;
+  background-color: #007bff; /* Blue button */
+  color: white;
   padding: 10px;
   border-radius: 8px;
   width: 75px;
@@ -203,8 +218,14 @@ text-decoration: none;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+.learn-body-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Trending container styling */
 .dashboard-trending-container {
   display: flex;
   flex-direction: column;
@@ -221,10 +242,10 @@ text-decoration: none;
 }
 
 .dashboard-trending-card {
-  border: 1px solid #eff2f5;
+  border: 1px solid #dee2e6; /* Light border for trending card */
   border-radius: 8px;
   padding: 12px 15px;
-  transition: 0.3s;
+  transition: background-color 0.3s, border-color 0.3s;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -233,8 +254,18 @@ text-decoration: none;
 }
 
 .dashboard-trending-card:hover {
-  background-color: #f3f7ff;
-  border: 1px solid #6296ff;
+  background-color: #f8f9fa; /* Lighter background on hover */
+  border: 1px solid #adb5bd; /* Darker border on hover */
+}
+
+/* Table styling */
+mat-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 10px solid #dee2e6; /* Light gray border */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
 /* Add hover effect to mat-table rows */
@@ -243,7 +274,65 @@ mat-row:hover {
   border: 1px solid #6296ff;
 }
 
+mat-header-cell {
+  font-weight: bold;
+  background-color: #f8f9fa; /* Light gray background for header */
+  padding: 12px;
+  text-align: left;
+  color: #333;
+  border-bottom: 1px solid #dee2e6; /* Border between header and rows */
+}
 
+mat-cell {
+  padding: 12px;
+  text-align: left;
+  color: #333; /* Consistent text color */
+  border-bottom: 1px solid #dee2e6; /* Light border for row separation */
+}
+
+.mat-row:hover {
+  background-color: #f1f3f5; /* Light gray background on hover */
+  cursor: pointer;
+}
+
+/* Stock name container */
+.stock-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.stock-symbol {
+  font-size: 0.85em;
+  color: #777; /* Slightly lighter gray */
+}
+
+.mat-cell img {
+  border-radius: 50%; /* Circular images */
+  border: 1px solid #dee2e6; /* Subtle border around images */
+  padding: 2px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .mat-header-cell, .mat-cell {
+    padding: 10px;
+  }
+
+  .stock-name-container {
+    gap: 5px;
+  }
+
+  .mat-row {
+    font-size: 0.9em;
+  }
+}
+
+/* Trending card header styling */
 .trending-card-header {
   display: flex;
   align-items: center;
