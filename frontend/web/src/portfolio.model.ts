@@ -15,13 +15,14 @@ export interface Portfolio {
     stockName: string;
     stockSymbol: string;
     stockImage: string;
-    currentPrice: number;
+    current_price: number; // Ensure this is the correct property name
     priceChangePercentage24h: number;
     holdings: number;
     avgBuyPrice: number;
     returns: number;
     quantity: number;
   }
+  
   
   export interface PortfolioTransaction {
     transactionId: string;
