@@ -68,13 +68,14 @@
         </button>
       </mat-list-item>
 
+
       <mat-list-item *ngFor="let portfolio of portfolios; let i = index"
                      [ngClass]="{'selected-portfolio': selectedIndex === i}"
                      class="mat-list-item">
         <img matListItemAvatar [src]="'https://avatars.dicebear.com/api/initials/' + portfolio.investmentAgenda + '.svg'" alt="Avatar" class="portfolio-avatar">
         <div class="portfolio-item-content">
           <div (click)="handleListItemClick(i)" class="portfolio-item-info">
-            <a [routerLink]="['/portfolio/stock', portfolio.portfolioId]" class="portfolio-link">
+            <a [routerLink]="['/portfolio/buy-sell', portfolio.portfolioId]" class="portfolio-link">
               <span matListItemTitle [ngClass]="{'selected-portfolio-title': selectedIndex === i}">
                 {{portfolio.portfolioName}}
               </span>

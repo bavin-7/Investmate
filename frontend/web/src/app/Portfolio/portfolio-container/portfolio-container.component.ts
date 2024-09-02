@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../../portfolio-service';
-import { Portfolio } from '../../../Portfolio.model';
+import { Portfolio } from '../../../portfolio.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddPortfolioComponent } from '../add-portfolio/add-portfolio.component';
 import { DeletePortfolioComponent } from '../delete-portfolio/delete-portfolio.component';
@@ -55,8 +55,14 @@ export class PortfolioContainerComponent implements OnInit {
     );
   }
 
+  // handleListItemClick(index: number): void {
+  //   this.selectedIndex = index;
+  // }
+
   handleListItemClick(index: number): void {
     this.selectedIndex = index;
+    const selectedPortfolio = this.portfolios[index];
+
   }
 
   openAddPortfolioDialog(): void {

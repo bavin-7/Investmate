@@ -21,14 +21,14 @@ import { MatOptionModule } from '@angular/material/core';
 export class AddPortfolioComponent {
   portfolioForm: FormGroup;
   portfolioData = [
-    { name: 'Community-Investing', id: '1' },
-    { name: 'Ethical-Investing', id: '2' },
-    { name: 'Green-Investing', id: '3' },
-    { name: 'Impact-Investing', id: '4' },
-    { name: 'Mission-related Investing', id: '5' },
-    { name: 'Responsible-Investing', id: '6' },
-    { name: 'Socially-Responsible-Investing', id: '7' },
-    { name: 'Values-based investing', id: '8' },
+    { name: 'Dollar-Cost Averaging (DCA)', id: '1' },
+    { name: 'Faster-Growth/High-Risk Strategy', id: '2' },
+    { name: 'Values-investing', id: '3' },
+    { name: 'Diversification', id: '4' },
+    { name: 'Yield Farming/Staking', id: '5' },
+    { name: 'Trend Following', id: '6' },
+    { name: 'Swing Trading', id: '7' },
+    { name: 'Buy and Hold (HODL)', id: '8' },
   ];
 
   constructor(
