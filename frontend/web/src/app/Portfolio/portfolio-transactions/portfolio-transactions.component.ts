@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
 import { PageEvent } from '@angular/material/paginator';
-
 @Component({
   selector: 'app-portfolio-transactions',
   standalone: true,
@@ -51,7 +50,6 @@ export class PortfolioTransactionsComponent implements OnInit,OnChanges {
         'http://localhost:9001/portfolio/getTransaction',
         { params: { portfolioId: this.id, stockId: this.stockId } }
       ).toPromise();
-
       this.stockData = response.stock;
       this.transactionsList = response.transactionsDetailsList;
       this.holdings = response.holdings;

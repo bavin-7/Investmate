@@ -1,5 +1,3 @@
-
-<app-portfolio-transactions [stockId]="stockId" [id]="portfolioId"></app-portfolio-transactions>
 <div class="portfolio-container">
   <h2>{{ portfolio?.portfolioName }}</h2>
   <p>Investment Agenda: {{ portfolio?.investmentAgenda }}</p>
@@ -37,15 +35,16 @@
   <div class="stock-list">
     <h3>Portfolio Holdings</h3>
     <div class="stock-list-container">
-      <div class="stock-item" *ngFor="let stock of stocks">
+      <div class="stock-item" *ngFor="let stock of stocks" >
         <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
         <div class="stock-details">
           <h4 class="stock-name">{{ stock.stockName }} ({{ stock.stockSymbol }})</h4>
           <p class="stock-quantity">Holdings: {{ stock.holdings }}</p>
           <p class="stock-buy-price">Avg. Buy Price: {{ stock.avgBuyPrice | currency }}</p>
-          <!-- <p class="stock-returns">Returns: {{ stock.returns | currency }}</p> -->
+          <p class="stock-returns">Returns: {{ stock.returns | currency }}</p> 
         </div>
       </div>
     </div>
   </div>
+  <app-portfolio-transactions [stockId]="stockId" [id]="portfolioId"></app-portfolio-transactions>
 </div>

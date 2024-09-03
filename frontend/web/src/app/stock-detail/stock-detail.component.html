@@ -1,5 +1,5 @@
-<div class="stock-container">
-  <nav class="navbar">
+
+  <!-- <nav class="navbar">
     <div>
         <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
         <h4>InvestMate</h4>
@@ -8,10 +8,7 @@
         <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
         <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
         <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
-        <!-- <li><a (click)="logout()">Logout</a></li> -->
-
-        <!-- Profile Avatar Section -->
-        <!-- User profile dropdown button -->
+   
         <li class="dropdown" style="margin-left:-40px ;">
             <div class="profile-avatar" (click)="toggleDropdown()">
                 <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
@@ -22,9 +19,9 @@
             </div>
         </li>
     </ul>
-  </nav>
+  </nav> 
 
-  <!-- User Details Dialog -->
+  
   <div *ngIf="showUserDetailsDialog" class="dialog-overlay">
     <div class="dialog-content">
         <h2>User Details:</h2>
@@ -40,7 +37,11 @@
         </div>
         <button (click)="closeUserDetailsDialog()">Close</button>
     </div>
-  </div>
+  </div> -->
+
+
+
+<div class="stock-container">
   <div *ngIf="stock" class="stock-detail-container">
       <div class="stock-info">
         <img [src]="stock.image" alt="{{stock.name}}" width="100">
@@ -58,4 +59,5 @@
         <canvas #stockChart></canvas>
       </div>
   </div>
-</div>  
+</div>
+  

@@ -20,6 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PortfolioContainerComponent } from './Portfolio/portfolio-container/portfolio-container.component';
 import { PortfolioAlertComponent } from './Portfolio/portfolio-alert/portfolio-alert.component';
 import { PortfolioTransactionsComponent } from './Portfolio/portfolio-transactions/portfolio-transactions.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 
 //import { StockService } from './stock.service';
 
@@ -29,9 +31,9 @@ import { PortfolioTransactionsComponent } from './Portfolio/portfolio-transactio
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule, LoginComponent, UserDetailsComponent, RegisterComponent
-           , StockDetailComponent, StockListComponent, MarketTrendsComponent, DashboardComponent, PortfolioAlertComponent,
-           PortfolioContainerComponent,PortfolioTransactionsComponent],
+  imports: [RouterOutlet, FormsModule, CommonModule, LoginComponent, UserDetailsComponent, RegisterComponent,
+    StockDetailComponent, StockListComponent, MarketTrendsComponent, DashboardComponent, PortfolioAlertComponent,
+    PortfolioContainerComponent, NavbarComponent, PortfolioTransactionsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
