@@ -1,9 +1,12 @@
+.cont{
+  background-color: #f8e2c8;
+}
+
 /* Dialog styling */
 .dialog-title {
   font-size: 22px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
+  color: brown;
   text-align: center;
   background-color: #f8e2c8;
 }
@@ -15,7 +18,6 @@
   padding: 20px;
   background-color: #f8e2c8; 
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 /* Form styling */
@@ -36,12 +38,12 @@
 }
 
 .mat-label {
-  color: #333; 
+  color: brown; 
   font-weight: 600;
 }
 
 input[matInput], mat-select {
-  color: #333; 
+  color: brown; 
 }
 
 .mat-error {
@@ -55,9 +57,8 @@ input[matInput], mat-select {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
-  padding: 10px 0;
+  padding: 20px;
   background-color: #f8e2c8; 
-  border-top: 1px solid #f1cba5; 
 }
 
 .action-button {
@@ -65,17 +66,19 @@ input[matInput], mat-select {
   color: #333;
   font-weight: 600;
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
 }
 
 .action-button:hover {
-  background-color: #ffecd1; 
+  background-color: #f2a840; 
 }
 
 .submit-button {
   background-color: #ff9e03; 
   color: white;
   font-weight: 600;
-  transition: background-color 
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
 }
 
 .submit-button:hover {

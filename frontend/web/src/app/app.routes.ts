@@ -11,6 +11,7 @@ import { AddPortfolioComponent } from './Portfolio/add-portfolio/add-portfolio.c
 import { DeletePortfolioComponent } from './Portfolio/delete-portfolio/delete-portfolio.component';
 import { PortfolioAlertComponent } from './Portfolio/portfolio-alert/portfolio-alert.component';
 import { PortfolioBuySellContainerComponent } from './Portfolio/portfolio-buy-sell-container/portfolio-buy-sell-container.component';
+import { PortfolioTransactionsComponent } from './Portfolio/portfolio-transactions/portfolio-transactions.component';
 
 export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
@@ -25,7 +26,8 @@ export const routes: Routes = [
     { path: 'portfolio/add', component: AddPortfolioComponent }, // Add Portfolio route
     { path: 'portfolio/delete/:id', component: DeletePortfolioComponent }, // Delete Portfolio route
     { path: 'portfolio/alert', component: PortfolioAlertComponent }, // Portfolio Alert route
-    { path: 'portfolio/buy-sell/:id', component: PortfolioBuySellContainerComponent }
+    { path: 'portfolio/buy-sell/:id', component: PortfolioBuySellContainerComponent },
+    { path: 'portfolio/:id/transactions/:stockId', component: PortfolioTransactionsComponent }
 ];
 
  export class AppRoutingModule { }

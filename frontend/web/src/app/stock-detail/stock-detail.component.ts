@@ -7,6 +7,7 @@ import { Chart, registerables } from 'chart.js/auto';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';  // Import the UserService
 import { User } from '../user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-stock-detail',
@@ -18,7 +19,7 @@ import { User } from '../user.model';
 export class StockDetailComponent implements AfterViewChecked {
 
   userDetails: any;
-
+  loading = false;
   dropdownOpen = false; // Add this line
   isDropdownVisible = false;
   showUserDetailsDialog: boolean = false;  // Variable to control the dialog visibility
@@ -28,11 +29,19 @@ export class StockDetailComponent implements AfterViewChecked {
   stock?: Stock;
   chartInitialized = false; // Flag to ensure chart is initialized only once
 
-  constructor(private route: ActivatedRoute, private stockService: StockService, private router: Router, private userService: UserService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private stockService: StockService, private router: Router, private userService: UserService) {
     Chart.register(...registerables);
   }
 
   ngOnInit(): void {
+    this.loading = true;
+
+    // Fetch user details
+    const userId = sessionStorage.getItem('userId')!;
+    this.http.get(`http://localhost:9003/users/${userId}`).subscribe((response: any) => {
+    this.userDetails = response;
+    });
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.stockService.getStockById(id).subscribe(stock => {
@@ -40,6 +49,7 @@ export class StockDetailComponent implements AfterViewChecked {
         console.log(this.stock.sparkline_in_7d);
       });
     }
+    this.loading = false;
   }
 
   ngAfterViewChecked(): void {

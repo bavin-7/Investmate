@@ -8,6 +8,7 @@ export interface Portfolio {
     totalBalance?: number;
     totalReturns?: number;
     stocks?: PortfolioStock[];
+    stockId?: string;
   }
   
   export interface PortfolioStock {

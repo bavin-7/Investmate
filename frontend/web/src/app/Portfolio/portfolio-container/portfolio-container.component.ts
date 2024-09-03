@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { UserService } from '../../user.service';
+import { User } from '../../user.model';
+import { PortfolioTransactionsComponent } from '../portfolio-transactions/portfolio-transactions.component';
 
 
 @Component({
@@ -18,9 +21,17 @@ import { MatListModule } from '@angular/material/list';
   templateUrl: './portfolio-container.component.html',
   styleUrls: ['./portfolio-container.component.css'],
 imports: [MatDialogModule, RouterLink, CommonModule, FormsModule,
-            MatIconModule, RouterOutlet, MatListModule]
+            MatIconModule, RouterOutlet, MatListModule,PortfolioTransactionsComponent]
 })
 export class PortfolioContainerComponent implements OnInit {
+
+  userDetails: any;
+
+  dropdownOpen = false; // Add this line
+  isDropdownVisible = false;
+  showUserDetailsDialog: boolean = false;  // Variable to control the dialog visibility
+
+
   portfolios: Portfolio[] = [];
   isPortfolioAdded = false;
   selectedIndex = -1;
@@ -32,6 +43,7 @@ export class PortfolioContainerComponent implements OnInit {
     private dialog: MatDialog,
     private breakpointObserver: BreakpointObserver,
     private router: Router,
+    private userService: UserService
   ) {
     this.userId = sessionStorage.getItem('userId') || '';
   }
@@ -59,11 +71,18 @@ export class PortfolioContainerComponent implements OnInit {
   //   this.selectedIndex = index;
   // }
 
-  handleListItemClick(index: number): void {
+  handleListItemClick(index: number, stockId: string | undefined): void {
     this.selectedIndex = index;
     const selectedPortfolio = this.portfolios[index];
-
+  
+    if (selectedPortfolio && stockId) {
+      this.router.navigate(['/portfolio', selectedPortfolio.portfolioId, 'transactions', stockId]);
+    } else {
+      console.error('Portfolio or stockId is missing');
+    }
   }
+  
+  
 
   openAddPortfolioDialog(): void {
     const dialogRef = this.dialog.open(AddPortfolioComponent, {
@@ -107,4 +126,56 @@ export class PortfolioContainerComponent implements OnInit {
       }
     });
   }
+
+  // Toggle dropdown function
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+   // Logout function
+logout(): void {
+  sessionStorage.clear(); // Clear session storage or any other logout logic
+  this.router.navigate(['/login']); // Navigate to the login page or wherever needed
+}
+
+// viewUserDetails function
+viewUserDetails(): void {
+  this.isDropdownVisible = false;
+  this.router.navigate(['/user-details']);
+}
+
+  openUserDetailsDialog() {
+    const userId = sessionStorage.getItem('userId');  // Retrieve the stored user ID
+    if (userId) {
+      this.userService.getUserById(userId).subscribe({
+        next: (user: User) => {
+          this.userDetails = user;  // Store fetched user details
+          this.showUserDetailsDialog = true;  // Show the dialog
+          console.log('User details fetched successfully:', user);
+        },
+        error: (error: any) => {
+          console.error('Error fetching user details:', error);
+        }
+      });
+    } else {
+      console.error('User ID not found in session storage');
+    }
+  }
+
+
+  closeUserDetailsDialog() {
+    this.showUserDetailsDialog = false;  // Hide the dialog
+    this.userDetails = null;  // Clear user details
+  }
+
+    // New navigation method
+    navigateToTransactions(portfolioId: string, stockId: string): void {
+      this.router.navigate(['/portfolio', portfolioId, 'transactions', stockId]);
+    }
+  
+    // Example method where navigation might be triggered
+    onTransactionClick(portfolioId: string, stockId: string): void {
+      this.navigateToTransactions(portfolioId, stockId);
+    }
+  
 }

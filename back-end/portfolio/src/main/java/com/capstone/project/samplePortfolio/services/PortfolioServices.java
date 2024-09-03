@@ -373,6 +373,46 @@ public PortfolioResponse updatePortfolio(String portfolioId, PortfolioRequest po
         return null;
     }
 
+    public  List<Transactions> getAllTransactionsHistory(String portfolioId) {
+        // Retrieve the portfolio by ID or return null if it doesn't exist
+        Optional<Portfolio> portfolio = portfolioRepository.findById(portfolioId);
+        if (portfolio.isPresent()) {
+            List<Stock> stockList = portfolio.get().getStocks();
+
+            // Find the stock in the portfolio for the given stock ID or return null if it doesn't exist
+//            Optional<Stock> stock = stockList.stream().filter(data -> data.getStockId().equals(stockId)).findFirst();
+            
+//            if (stock.isPresent()) {
+                // Retrieve stock information from a web service
+            List<Transactions> transactionsList = new ArrayList<Transactions>();
+            for(Stock stock: stockList) {
+            	List<StockTemplate> stocks = webClient.get()
+            			.uri("http://localhost:8090/stock/getAll/" + stock.getStockId())
+            			.retrieve()
+            			.bodyToFlux(StockTemplate.class)
+            			.collectList()
+            			.block();
+            	StockTemplate stockTemplate = stocks.get(0);
+            	
+            	// Calculate holdings and get the list of transactions for the stock
+            	double holdings = stockTemplate.getCurrentPrice() * stock.getQuantity();
+            	for(Transactions t : stock.getTransactions()) {
+            		transactionsList.add(t);
+            	}
+            	// Set the properties of the TransactionsDetails object
+//            	transactionsDetails.setStock(stock);
+//            	transactionsDetails.setTransactionsDetailsList(transactionsList);
+//            	transactionsDetails.setHoldings(holdings);
+//            	transactionsDetails.setReturns(holdings - (stock.getTotalBuy() - stock.getTotalSell()));
+            	
+            }
+            return transactionsList;
+//            }
+//            return null;
+        }
+        return null;
+    }
+    
     public List<PortfolioData> getPortfolioData(String userId) {
         // Get all portfolios for the specified user
         List<PortfolioResponse> getPortfolios = getAllPortfolio(userId);

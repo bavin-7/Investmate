@@ -93,6 +93,11 @@ public class PortfolioController {
         return new ResponseEntity<>(portfolioServices.getTransactionsHistory(portfolioId, stockId), HttpStatus.OK);
     }
 
+    @GetMapping("/getAllTransactions")
+    public ResponseEntity<List<Transactions>> getAllTransactionsHistory(@RequestParam("portfolioId") String portfolioId) {
+        return ResponseEntity.ok(portfolioServices.getAllTransactionsHistory(portfolioId));
+    }
+    
     // Get portfolio data for a user
     @GetMapping("/getPortfolioData")
     public List<PortfolioData> getPortfolioData(@RequestParam("userId") String userId) {

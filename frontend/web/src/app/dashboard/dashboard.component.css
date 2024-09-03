@@ -377,10 +377,11 @@ h4 {
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  background-color: #f8e2c8;
 }
 
 .dashboard-trending-card:hover {
-  background-color: #f9eedd;
+  background-color: #ffffff;
   border: 3px solid #ff9e03;
 }
 

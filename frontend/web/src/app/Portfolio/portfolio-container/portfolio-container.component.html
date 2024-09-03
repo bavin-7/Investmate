@@ -47,8 +47,31 @@
 </div> -->
 
 
+<div class="cont">
+  <nav class="navbar">
+    <div>
+        <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
+        <h4>InvestMate</h4>
+    </div>
+    <ul>
+        <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
+        <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
+        <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
+        <!-- <li><a (click)="logout()">Logout</a></li> -->
 
-<!-- No Portfolio Container -->
+        <!-- Profile Avatar Section -->
+        <!-- User profile dropdown button -->
+        <li class="dropdown" style="margin-left:-40px ;">
+            <div class="profile-avatar" (click)="toggleDropdown()">
+                <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
+            </div>
+            <div class="dropdown-menu" [class.show]="dropdownOpen">
+            <a class="dropdown-item" (click)="openUserDetailsDialog()">User Details</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
 <div *ngIf="portfolios.length === 0" class="no-portfolio-container">
   <h4 class="no-portfolio-heading">No Portfolios to Display</h4>
   <span class="no-portfolio-message">Create a new portfolio to get started</span>
@@ -57,24 +80,23 @@
   </button>
 </div>
 
+
+
 <!-- Portfolio Container -->
 <div *ngIf="portfolios.length > 0" class="portfolio-container">
   <div class="sidebar-portfolio-container">
     <mat-list>
       <mat-list-item class="mat-list-header">
         <span matListItemTitle>My Portfolios</span> 
-        <button mat-icon-button (click)="openAddPortfolioDialog()" matTooltip="Create a new portfolio" class="add-portfolio-button">
-          <!-- <mat-icon>add_circle</mat-icon> -->
+        <button mat-icon-button (click)="openAddPortfolioDialog()" matTooltip="Create a new portfolio" class="add-portfolio-button"  style="margin-left: 90%;">
+          <mat-icon style="border: none;">add</mat-icon>
         </button>
       </mat-list-item>
-
-
       <mat-list-item *ngFor="let portfolio of portfolios; let i = index"
                      [ngClass]="{'selected-portfolio': selectedIndex === i}"
                      class="mat-list-item">
-        <!-- <img matListItemAvatar [src]="'https://avatars.dicebear.com/api/initials/' + portfolio.investmentAgenda + '.svg'" alt="Avatar" class="portfolio-avatar"> -->
         <div class="portfolio-item-content">
-          <div (click)="handleListItemClick(i)" class="portfolio-item-info">
+          <div (click)="handleListItemClick(i, portfolio.stockId)" class="portfolio-item-info">
             <a [routerLink]="['/portfolio/buy-sell', portfolio.portfolioId]" class="portfolio-link">
               <span matListItemTitle [ngClass]="{'selected-portfolio-title': selectedIndex === i}">
                 {{portfolio.portfolioName}}
@@ -97,4 +119,6 @@
     </mat-list>
   </div>
   <router-outlet></router-outlet>
+</div>
+
 </div>

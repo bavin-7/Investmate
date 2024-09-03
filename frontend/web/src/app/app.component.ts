@@ -19,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 // import { MatIconModule } from '@angular/material/icon';
 import { PortfolioContainerComponent } from './Portfolio/portfolio-container/portfolio-container.component';
 import { PortfolioAlertComponent } from './Portfolio/portfolio-alert/portfolio-alert.component';
+import { PortfolioTransactionsComponent } from './Portfolio/portfolio-transactions/portfolio-transactions.component';
 
 //import { StockService } from './stock.service';
 
@@ -30,7 +31,7 @@ import { PortfolioAlertComponent } from './Portfolio/portfolio-alert/portfolio-a
   standalone: true,
   imports: [RouterOutlet, FormsModule, CommonModule, LoginComponent, UserDetailsComponent, RegisterComponent
            , StockDetailComponent, StockListComponent, MarketTrendsComponent, DashboardComponent, PortfolioAlertComponent,
-           PortfolioContainerComponent,],
+           PortfolioContainerComponent,PortfolioTransactionsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
