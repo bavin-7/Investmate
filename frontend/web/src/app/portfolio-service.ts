@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Portfolio } from '../portfolio.model';
+import { Portfolio, PortfolioStock, PortfolioTransaction } from '../portfolio.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,18 +32,10 @@ export class PortfolioService {
     return this.http.get<Portfolio>(`${this.apiUrl}/get/${portfolioId}`);
   }
 
-
-
   getAllStocks(portfolioId: string): Observable<{ stockDetails: any[] }> {
     return this.http.get<{ stockDetails: any[] }>(`${this.apiUrl}/getAllStocks?portfolioId=${portfolioId}`);
   }
-  
-  
-
-  // buyStock(portfolioId: string, stockId: string, quantity: number): Observable<any> {
-  //   const url = `${this.apiUrl}/buyStock/${portfolioId}?stockId=${stockId}&quantity=${quantity}`;
-  //   return this.http.put(url, {});
-  // }
+ 
 
   buyStock(portfolioId: string, stockId: string, quantity: number): Observable<any> {
     const url = `${this.apiUrl}/buyStock/${quantity}`;
@@ -55,12 +48,18 @@ export class PortfolioService {
   }
 
   sellStock(portfolioId: string, stockId: string, quantity: number): Observable<any> {
-    const url = `${this.apiUrl}/sellStock/${quantity}?stockId=${stockId}&portfolioId=${portfolioId}`;
-    return this.http.put(url, {}); // Use PUT method as specified in backend
+    const url = `${this.apiUrl}/sellStock/${quantity}`;
+    return this.http.put(url, null, {
+      params: {
+        stockId: stockId,
+        portfolioId: portfolioId
+      }
+    });
   }
-  
 
   getTransactions(portfolioId: string, stockId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/transactions/${portfolioId}/${stockId}`);
+    return this.http.get<any>(`${this.apiUrl}/getTransactions`, {
+      params: { portfolioId, stockId }
+    });
   }
 }

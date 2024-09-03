@@ -1,5 +1,5 @@
 <div class="stock-list-container">
-  <nav class="navbar">
+  <!-- <nav class="navbar">
     <div>
         <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
         <h4>InvestMate</h4>
@@ -8,10 +8,7 @@
         <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
         <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
         <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
-        <!-- <li><a (click)="logout()">Logout</a></li> -->
-
-        <!-- Profile Avatar Section -->
-        <!-- User profile dropdown button -->
+       
         <li class="dropdown" style="margin-left:-40px ;">
             <div class="profile-avatar" (click)="toggleDropdown()">
                 <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
@@ -22,7 +19,7 @@
             </div>
         </li>
     </ul>
-  </nav>
+  </nav> -->
   <h3>Today's Cryptocurrency Prices By Market Cap</h3>
   <div class="stock-list-container">
     <div class="stock-card" *ngFor="let stock of stocks" (click)="viewStockDetails(stock.id)">
@@ -30,7 +27,7 @@
       <div class="stock-info">
         <h5 class="stock-symbol">{{ stock.symbol }}</h5>
         <p class="stock-name">{{ stock.name }}</p>
-        <p class="stock-price">{{ stock.current_price | currency: 'INR' }}</p>
+        <p class="stock-price">{{ stock.current_price | currency: 'USD' }}</p>
         <p class="stock-market-cap">Market Cap: {{ stock.market_cap | number }}</p>
       </div>
     </div>

@@ -1,0 +1,89 @@
+ 
+ 
+<div *ngIf="loading" class="portfolio-spinner">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+ 
+  <div *ngIf="!loading && !stockData" class="portfolio-transactions-no-assests-div">
+    <h4 class="portfolio-transactions-no-assets">No Transaction to be display</h4>
+  </div>
+ 
+  <div *ngIf="!loading && stockData" class="portfolio-transactions">
+    <div class="portfolio-transactions-nav">
+      <div class="portfolio-transactions-current-balance">
+        <div class="portfolio-transactions-balance-title">
+          {{ stockData.length !== 0 ? stockData.stockName : '' }}({{ stockData.length !== 0 ? stockData.stockSymbol.toUpperCase() : '' }}) Balance
+        </div>
+        <div class="portfolio-transactions-balance-price">
+          ${{ holdings.toFixed(2) }}
+        </div>
+        <div class="portfolio-transactions-transactions-btn">
+          <div class="portfolio-transactions-quantity">
+            <div class="portfolio-transactions-quantity-title">Quantity</div>
+            <div class="portfolio-transactions-quantity-price">
+              {{ stockData.quantity }} {{ stockData.stockSymbol.toUpperCase() }}
+            </div>
+          </div>
+          <div class="portfolio-transactions-avgBuyPrice">
+            <div class="portfolio-transactions-avgBuyPrice-title">Avg Buy Price</div>
+            <div class="portfolio-transactions-avgBuyPrice-price">
+              ${{ stockData.avgBuyPrice.toFixed(2) }}
+            </div>
+          </div>
+          <div class="portfolio-transactions-profit-loss">
+            <div class="portfolio-transactions-profit-loss-title">
+              Profit/Loss
+            </div>
+            <div *ngIf="returns >= 0" class="portfolio-transactions-balance-gain-loss portfolio-transactions-gain">
+              ${{ returns.toFixed(2) }}
+            </div>
+            <div *ngIf="returns < 0" class="portfolio-transactions-balance-gain-loss portfolio-transactions-loss">
+              -{{ formattedReturns }}
+ 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-transactions">
+      <h4>Transactions History</h4>
+      <table mat-table [dataSource]="transactionsList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)" class="portfolio-transactions-table-container">
+ 
+        <!-- Index Column -->
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+ 
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let item">
+            <div>
+              <img class="portfolio-transactions-img" [src]="stockData.stockImage" alt="img">
+            </div>
+            <div class="portfolio-transactions-name-symbol">
+              <span class="portfolio-transactions-tableData">{{ item.type }}</span>
+              <span class="portfolio-transactions-symbol">{{ item.createdAt | date:'yyyy-MM-dd' }}</span>
+            </div>
+          </td>
+        </ng-container>
+ 
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let item">${{ item.amount.toFixed(2) }}</td>
+        </ng-container>
+ 
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+        </ng-container>
+ 
+        <tr mat-header-row *matHeaderRowDef="['index', 'type', 'amount', 'quantity']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['index', 'type', 'amount', 'quantity'];"></tr>
+      </table>
+ 
+    </div>
+  </div>

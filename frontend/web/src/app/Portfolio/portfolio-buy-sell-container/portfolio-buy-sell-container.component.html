@@ -1,63 +1,22 @@
-<!-- 
 <div class="portfolio-container">
   <h2>{{ portfolio?.portfolioName }}</h2>
   <p>Investment Agenda: {{ portfolio?.investmentAgenda }}</p>
-
-  <div class="buy-stock-form">
-    <h3>Buy Stock</h3>
-    <label for="stock-select">Select Stock:</label>
-    <select id="stock-select" [(ngModel)]="stockToBuy">
-      <option *ngFor="let stock of stocks" [ngValue]="stock">
-        {{ stock.stockName }} ({{ stock.stockSymbol }})
-      </option>
-    </select>
-
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" [(ngModel)]="quantityToBuy" />
-
-    <button (click)="addStock()">Buy Stock</button>
-  </div>
-
-  <div class="stock-list">
-    <h3>Portfolio Holdings</h3>
-    <div class="stock-list-container">
-      <div class="stock-item" *ngFor="let stock of portfolio?.stocks || []">
-        <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
-        <div class="stock-details">
-          <h4 class="stock-name">{{ stock.stockName }} ({{ stock.stockSymbol }})</h4>
-          <p class="stock-quantity">Holdings: {{ stock.quantity }}</p>
-          <p class="stock-buy-price">Avg. Buy Price: {{ stock.avgBuyPrice | currency }}</p>
-          <p class="stock-returns">Returns: {{stock.returns}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-<!-- portfolio-buy-sell-container.component.html -->
-
-<div class="portfolio-container">
-  <h2>{{ portfolio?.portfolioName }}</h2>
-  <p>Investment Agenda: {{ portfolio?.investmentAgenda }}</p>
-
+ 
   <div class="buy-stock-form">
     <h3>Buy Stock</h3>
     <label for="stock-select-buy">Select Stock:</label>
     <select id="stock-select-buy" [(ngModel)]="stockToBuy">
-      <option *ngFor="let stock of stocks" [ngValue]="stock">
-        {{ stock.stockName }} ({{ stock.stockSymbol }})
+      <option *ngFor="let stock of availableStocks" [ngValue]="stock">
+        {{ stock.name }} ({{ stock.symbol }})
       </option>
     </select>
-
+ 
     <label for="quantity-buy">Quantity:</label>
     <input type="number" id="quantity-buy" [(ngModel)]="quantityToBuy" />
-
+ 
     <button (click)="addStock()">Buy Stock</button>
   </div>
-
+ 
   <div class="sell-stock-form">
     <h3>Sell Stock</h3>
     <label for="stock-select-sell">Select Stock:</label>
@@ -66,38 +25,25 @@
         {{ stock.stockName }} ({{ stock.stockSymbol }})
       </option>
     </select>
-
+ 
     <label for="quantity-sell">Quantity:</label>
     <input type="number" id="quantity-sell" [(ngModel)]="quantityToSell" />
-
+ 
     <button (click)="sellStock()">Sell Stock</button>
   </div>
-
+ 
   <div class="stock-list">
     <h3>Portfolio Holdings</h3>
     <div class="stock-list-container">
-      <div class="stock-item" *ngFor="let stock of stocks">
+      <div class="stock-item" *ngFor="let stock of stocks" >
         <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
         <div class="stock-details">
           <h4 class="stock-name">{{ stock.stockName }} ({{ stock.stockSymbol }})</h4>
           <p class="stock-quantity">Holdings: {{ stock.holdings }}</p>
           <p class="stock-buy-price">Avg. Buy Price: {{ stock.avgBuyPrice | currency }}</p>
-          <!-- <p class="stock-returns">Returns: {{ stock.returns | currency }}</p> -->
+          <p class="stock-returns">Returns: {{ stock.returns | currency }}</p> 
         </div>
       </div>
     </div>
   </div>
 </div>
-
-  
-  
-
-
-
-
-
-
-
-
-
-

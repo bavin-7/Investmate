@@ -1,115 +1,162 @@
-/* No Portfolio Container */
-.no-portfolio-container {
-    text-align: center;
-    padding: 30px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 600px;
-  }
+/* General Container Styles */
+
+.body-of-portfolio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+.no-portfolio-container, .portfolio-container {
   
-  .no-portfolio-heading {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 12px;
-  }
-  
-  .no-portfolio-message {
-    display: block;
-    margin-bottom: 20px;
-    color: #666;
-  }
-  
-  .create-portfolio-button {
-    margin-top: 15px;
-    padding: 12px 24px;
-  }
-  
-  /* Portfolio Container */
-  .portfolio-container {
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .sidebar-portfolio-container {
-    padding: 24px ;
-    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color:#f9c284;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 90%;
+    height: 90%;
   }
+/* No Portfolio Section Styles */
+.no-portfolio-heading {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.no-portfolio-message {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
   
-  .mat-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 32px 48px;
-    border-bottom: 1px solid #ddd;
-  }
+}
+
+.create-portfolio-button {
+  background-color:  whitesmoke;
+  color: black;
+  font-weight: bold;
+}
+
+/* Portfolio Section Styles */
+.sidebar-portfolio-container {
+  width: 100%;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mat-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: whitesmoke; /* Special color for the header block */
+  border-radius: 4px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.mat-list-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.selected-portfolio {
+  background-color: #e0f7fa;
+  border-radius: 4px;
+}
+
+.portfolio-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.portfolio-item-info {
+  flex-grow: 1;
+}
+
+.portfolio-link {
+  text-decoration: none;
+  color: #00796b;
+  font-weight: bold;
+}
+
+.portfolio-title {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* A beautiful, modern font */
   
-  .add-portfolio-button {
-    
-    color: #3f51b5;
-    border: 1px solid #3f51b5;
-    border-radius: 4px;
-  }
-  
-  .mat-list-item {
-    display: flex;
-    align-items: center;
-    padding: 16px 24px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .mat-list-item:last-child {
-    border-bottom: none;
-  }
-  
-  .portfolio-item-content {
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .portfolio-item-info {
-    flex: 1;
-  }
-  
-  .portfolio-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .selected-portfolio-title {
-    font-weight: 500;
-    color: #3f51b5; 
-  }
-  
-  .selected-portfolio-line {
-    color: #888;
-  }
-  
-  .portfolio-item-actions {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .action-button {
-    color: #333;
-  }
-  
-  .action-button:hover {
-    color: #3f51b5; 
-  }
-  
-  /* Adjust router-outlet margin */
-  router-outlet {
-    margin-top: 20px;
-  }
-  
+}
+
+.selected-portfolio-line {
+  font-size: 16px;
+  color: #00796b;
+  margin-top: 4px;
+}
+
+.portfolio-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the buttons */
+}
+
+.action-button {
+  color: #555;
+}
+
+.add-portfolio-button {
+  color: #ffffff;
+  margin-left: auto;
+}
+
+
+.portfolio-name {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif; /* A beautiful, elegant font */
+  color: #3c3c3c;
+}
+
+.portfolio-agenda {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6c757d; /* Muted text color */
+  font-family: 'Arial', sans-serif; /* Basic, clean font */
+  display: block;
+  margin-top: 4px;
+}
+
+
+.edit-button {
+  color: #00796b; /* A nice color for edit button */
+}
+
+
+.delete-button {
+  color: #d32f2f; /* Standard red color for delete */
+}
+
+
+.mat-list-item:hover .portfolio-item-content,
+.selected-portfolio .portfolio-item-content {
+  background-color: #f1f1f1;
+}
+
+
+.mat-list-item:hover .portfolio-name,
+.selected-portfolio .portfolio-name {
+  color: #00796b;
+}

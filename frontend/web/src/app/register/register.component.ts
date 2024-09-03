@@ -83,7 +83,9 @@ export class RegisterComponent {
     const addressValid = !!(this.user.address && this.user.address.trim().length > 0);
     
     // Phone Number: Must match the specified pattern
-    const phoneNumberValid = !!(this.user.phoneNumber && /^\+\d{1,3}-\d{1,4}-\d{4,10}$/.test(this.user.phoneNumber));
+     const phoneNumberValid = !! this.user.phoneNumber && /^(?:\+91-?\d{10}|\d{10})$/.test(this.user.phoneNumber);
+   
+    
     
     // Profile Picture URL: Must be a valid URL
     const profilePictureUrlValid = !!(this.user.profilePictureUrl && /^(https?:\/\/[^\s$.?#].[^\s]*)$/.test(this.user.profilePictureUrl));
