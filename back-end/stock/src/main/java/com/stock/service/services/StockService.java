@@ -25,7 +25,7 @@ public class StockService {
         return webClientBuilder.baseUrl(baseURL)
                 .build()
                 .get()
-                .uri("coins/markets?vs_currency=inr&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h,7d&locale=en")
+                .uri("coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h,7d&locale=en")
                 .retrieve()
                 .bodyToFlux(Stock.class);
     }
@@ -34,7 +34,7 @@ public class StockService {
         return webClientBuilder.baseUrl(baseURL)
                 .build()
                 .get()
-                .uri("coins/markets?vs_currency=inr&ids="+ ID + "&sparkline=true&price_change_percentage=24h,7d&locale=en")
+                .uri("coins/markets?vs_currency=usd&ids="+ ID + "&sparkline=true&price_change_percentage=24h,7d&locale=en")
                 .retrieve()
                 .bodyToFlux(Stock.class)
                 .collectList()
@@ -45,7 +45,7 @@ public class StockService {
         return webClientBuilder.baseUrl(baseURL)
                 .build()
                 .get()
-                .uri("coins/markets?vs_currency=inr&ids="+ commaSeparatedIds + "&sparkline=true&price_change_percentage=24h,7d&locale=en")
+                .uri("coins/markets?vs_currency=usd&ids="+ commaSeparatedIds + "&sparkline=true&price_change_percentage=24h,7d&locale=en")
                 .retrieve()
                 .bodyToFlux(Stock.class)
                 .collectList();

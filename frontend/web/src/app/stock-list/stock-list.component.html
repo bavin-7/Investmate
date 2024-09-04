@@ -1,25 +1,5 @@
+
 <div class="stock-list-container">
-  <!-- <nav class="navbar">
-    <div>
-        <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
-        <h4>InvestMate</h4>
-    </div>
-    <ul>
-        <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
-        <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
-        <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
-       
-        <li class="dropdown" style="margin-left:-40px ;">
-            <div class="profile-avatar" (click)="toggleDropdown()">
-                <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
-            </div>
-            <div class="dropdown-menu" [class.show]="dropdownOpen">
-            <a (click)="openUserDetailsDialog()">User Details</a>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
-            </div>
-        </li>
-    </ul>
-  </nav> -->
   <h3>Today's Cryptocurrency Prices By Market Cap</h3>
   <div class="stock-list-container">
     <div class="stock-card" *ngFor="let stock of stocks" (click)="viewStockDetails(stock.id)">
@@ -33,3 +13,8 @@
     </div>
   </div>
 </div>
+
+
+
+
+

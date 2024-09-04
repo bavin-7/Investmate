@@ -1,59 +1,19 @@
 
-  <!-- <nav class="navbar">
-    <div>
-        <img src="./IMlogo.png" alt="InvestMateLogo" height="100">
-        <h4>InvestMate</h4>
-    </div>
-    <ul>
-        <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
-        <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
-        <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
-   
-        <li class="dropdown" style="margin-left:-40px ;">
-            <div class="profile-avatar" (click)="toggleDropdown()">
-                <img [src]="userDetails?.profilePicture || 'default-avatar.png'" alt="">
-            </div>
-            <div class="dropdown-menu" [class.show]="dropdownOpen">
-            <a (click)="openUserDetailsDialog()">User Details</a>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
-            </div>
-        </li>
-    </ul>
-  </nav> 
-
-  
-  <div *ngIf="showUserDetailsDialog" class="dialog-overlay">
-    <div class="dialog-content">
-        <h2>User Details:</h2>
-        <div *ngIf="userDetails">
-            <p><strong>Username:</strong> {{ userDetails.username }}</p>
-            <p><strong>Email:</strong> {{ userDetails.email }}</p>
-            <p><strong>First Name:</strong> {{ userDetails.firstName }}</p>
-            <p><strong>Last Name:</strong> {{ userDetails.lastName }}</p>
-            <p><strong>Date of Birth:</strong> {{ userDetails.dateOfBirth | date }}</p>
-            <p><strong>Address:</strong> {{ userDetails.address }}</p>
-            <p><strong>Phone Number:</strong> {{ userDetails.phoneNumber }}</p>
-            <p><strong>Registration Date:</strong> {{ userDetails.registrationDate | date }}</p>
-        </div>
-        <button (click)="closeUserDetailsDialog()">Close</button>
-    </div>
-  </div> -->
-
-
-
 <div class="stock-container">
   <div *ngIf="stock" class="stock-detail-container">
-      <div class="stock-info">
-        <img [src]="stock.image" alt="{{stock.name}}" width="100">
-        <h2>{{ stock.name }} ({{ stock.symbol }})</h2>
-        <p>Price: {{ stock.current_price | currency: 'USD' }}</p>
-        <p>Market Cap: {{ stock.market_cap | number }}</p>
-        <p>High 24h: {{ stock.high_24h | currency: 'USD' }}</p>
-        <p>Low 24h: {{ stock.low_24h | currency: 'USD' }}</p>
-        <p [ngClass]="{'price-up': stock.price_change_percentage_24h > 0, 'price-down': stock.price_change_percentage_24h < 0}">
-          Price Change Percentage 24h: {{ stock.price_change_percentage_24h}}%
-        </p>
-      </div>
+    <div class="stock-info">
+      <img [src]="stock.image" alt="{{stock.name}}" width="100">
+      <h2>{{ stock.name }} ({{ stock.symbol }})</h2>
+      <p class="price">Price: {{ stock.current_price | currency: 'USD' }}</p>
+      <p>Market Cap: {{ stock.market_cap | number }}</p>
+      <p>Total Volume: {{ stock.total_volume | number }}</p>
+      <p>High 24h: {{ stock.high_24h | currency: 'USD' }}</p>
+      <p>Low 24h: {{ stock.low_24h | currency: 'USD' }}</p>
+      <p [ngClass]="{'price-up': stock.price_change_percentage_24h > 0, 'price-down': stock.price_change_percentage_24h < 0}">
+        Price Change Percentage 24h: {{ stock.price_change_percentage_24h }}%
+      </p>
+    </div>
+    
     
       <div class="chart-container">
         <canvas #stockChart></canvas>

@@ -249,9 +249,9 @@ export class PortfolioBuySellContainerComponent implements OnInit {
       // Map backend response to PortfolioStock model
       this.stocks = (portfolio.stocks ?? []).map(stock => {
         const avgBuyPrice = stock.avgBuyPrice ?? 0;
-        const holdings = stock.quantity ?? 0;
+        const holdings = stock.holdings ?? 0;
  
-        const totalCostBasis = avgBuyPrice * holdings;
+        const totalCostBasis = avgBuyPrice * stock.quantity;
         const currentValue = stock.currentPrice * holdings;
         const returns = currentValue - totalCostBasis;
  

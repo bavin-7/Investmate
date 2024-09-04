@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
     // Fetch market data
     const marketUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h,7d';
     this.http.get(marketUrl).subscribe((response: any) => {
-      this.marketData = response.slice(0, 20);
+      this.marketData = response.slice(0, 16);
     });
  
     // Fetch user details

@@ -12,6 +12,7 @@ import { DeletePortfolioComponent } from './Portfolio/delete-portfolio/delete-po
 import { PortfolioAlertComponent } from './Portfolio/portfolio-alert/portfolio-alert.component';
 import { PortfolioBuySellContainerComponent } from './Portfolio/portfolio-buy-sell-container/portfolio-buy-sell-container.component';
 import { PortfolioTransactionsComponent } from './Portfolio/portfolio-transactions/portfolio-transactions.component';
+import { LearnComponent } from './learn/learn.component';
 
 export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
@@ -27,7 +28,8 @@ export const routes: Routes = [
     { path: 'portfolio/delete/:id', component: DeletePortfolioComponent }, // Delete Portfolio route
     { path: 'portfolio/alert', component: PortfolioAlertComponent }, // Portfolio Alert route
     { path: 'portfolio/buy-sell/:id', component: PortfolioBuySellContainerComponent },
-    { path: 'transactions/:id/:stockId', component: PortfolioTransactionsComponent }
+    { path: 'transactions/:id/:stockId', component: PortfolioTransactionsComponent },
+    { path: 'learn', component: LearnComponent }
 
 ];
 
