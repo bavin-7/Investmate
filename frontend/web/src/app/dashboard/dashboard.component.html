@@ -42,8 +42,8 @@
   <div class="main div">
     <div class='dashboard-header'>
         <div class='dashboard-header-title'>Welcome, {{userDetails?.firstName}} {{userDetails?.lastName}}  to InvestMate </div>
-        <div class='dashboard-header-caption'>**Caption**</div>
-    </div>
+        <div class='dashboard-header-caption'>Buy the dip, Sell the rip!</div>
+    </div> <br>
     
     <!-- DASHBOARD BODY -->
     <div class='dashboard-body'>
@@ -63,10 +63,11 @@
                         <div style="display: flex; flex-direction: column; width: 100%;">
                             <div class='portfolio-header'>{{portfolio.portfolioName}}</div>
                             <div class='portfolio-body'>
-                                <div class='portfolio-body-balance'>${{portfolio.totalBalance.toFixed(4)}}</div>
+                                <div class='portfolio-body-balance'>${{portfolio.totalBalance.toFixed(2)}}</div>
                                 <div [ngClass]="{'portfolio-body-returns-gain': portfolio.totalReturns > 0, 'portfolio-body-returns-loss': portfolio.totalReturns <= 0}">
-                                    {{portfolio.totalReturns > 0 ? '+' : '-'}}${{numberWithCommas(portfolio.totalReturns)}}
+                                    {{ portfolio.totalReturns | currency:'USD' }}
                                   </div>
+                                  
                             </div>
                         </div>
                     </div>
@@ -77,7 +78,7 @@
                 <div class='dashboard-learn-body'>
                     <div class='learn-body-content'>Embark on your wealth journey with tailored content to kickstart your success.</div>
                     <div class='learn-body-button'>
-                        <a routerLink="/learn">Learn More</a>
+                        <a href="https://www.binance.com/en/square/news/all?ads=true&utm_source=googleadwords_int&utm_medium=cpc&ref=WMNC7PBZ&gad_source=1&gclid=CjwKCAjw59q2BhBOEiwAKc0ijXgghs-trQim4QWckTdb6Vkh_V6WNIJHg9uTuyT17E0KQFx26KVBhxoCfLYQAvD_BwE" target="_blank">Learn More</a>
                     </div>
                 </div>
             </div>

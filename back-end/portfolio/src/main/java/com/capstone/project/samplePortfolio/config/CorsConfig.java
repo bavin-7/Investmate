@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:4200")
 public class CorsConfig implements WebMvcConfigurer {
 
     @Override

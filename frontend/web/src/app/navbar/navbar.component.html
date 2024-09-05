@@ -6,12 +6,13 @@
         </div>
         <ul>
             <li><a class="text-decoration-none" [routerLink]="['/dashboard']">Home</a></li>
-            <li><a class="text-decoration-none" [routerLink]="['/stocks']">Stocks</a></li>
-            <li><a class="text-decoration-none" [routerLink]="['/portfolio']" style="margin-right: 750px;">Portfolio</a></li>
-            <li class="dropdown" style="margin-left:-40px ;">
+            <li><a class="text-decoration-none" [routerLink]="['/stocks']">Market</a></li>
+            <li><a class="text-decoration-none" [routerLink]="['/portfolio']">Portfolio</a></li>
+            <li><a class="text-decoration-none" [routerLink]="['/learn']">Learn</a></li>
+        
+            <li class="dropdown" style="margin-left:100px;">
                 <div class="profile-avatar" (click)="toggleDropdown()">
-                     <img [src]="userDetails?.profilePicture || 'assets/usericon.png'" alt="User Profile Picture"> 
-                     <!-- <img src="assets/usericon.png" alt="user"> -->
+                    <img [src]="userDetails?.profilePicture || 'assets/usericon.png'" alt="User Profile Picture">
                 </div>
                 <div class="dropdown-menu" [class.show]="dropdownOpen">
                     <a (click)="openUserDetailsDialog()">User Details</a>

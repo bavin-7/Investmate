@@ -1,184 +1,165 @@
 /* Container styling */
 .navbar-container {
     width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 35px;
-    padding: 35px;
-    background-color:  white;
-  }
-  
-  /* Header and Navbar styling */
-  h4 {
+    gap: 30px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+h4{
     font-style: italic;
     color: brown;
-  }
-  
-  /* Navbar styling */
-  .navbar {
-    display: flex; 
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%;
-    padding: 0 20px; 
-    box-sizing: border-box; 
-  }
-  
-  /* First div in navbar (e.g., logo container or any other div) */
-  .navbar > div {
-    flex-shrink: 0; 
-  }
-  
-  /* Navbar ul styling */
-  .navbar ul {
-    display: flex; 
+}
+
+.navbar {
+    display: flex;
     flex-direction: row;
-    gap: 20px; 
-    list-style-type: none; 
-    background-color: #f8e2c8; 
-    border-radius: 10px;
-    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar img {
+    height: 80px; /* Adjust height as needed */
+
+    margin-right: 20px; /* Space between logo and text */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin:10px;
+    padding:5px;
     flex-grow: 1; 
-    justify-content: flex-start; 
-    margin-left: 20px;
-  }
-  
-  /* Navbar li and a styling */
-  .navbar li {
-    padding: 14px 20px;
-  
-  }
-  
-  .navbar a {
-    color: brown;
+    justify-content: flex-end; 
+    justify-content: flex-start;
+    justify-items: center;
+    background-color: #f8e2c8;
+    border-radius: 10px;
+}
+
+.navbar ul li {
+    margin: 0 15px; /* Space between each nav item */
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar ul li a {
     text-decoration: none;
-    padding: 10px 15px;
-    transition: color 0.3s;
-  }
-  
-  .navbar a:hover {
-    color: #007bff; 
-  }
-  
-  
-  .profile-avatar {
-    cursor: pointer;
+    color: black; /* Professional color */
+    font-family: 'Arial', sans-serif; /* Clean, professional font */
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.navbar ul li a:hover {
+    color: coral; /* Darker color on hover */
+}
+
+.profile-avatar img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8e2c8;
-    border: 1px solid brown;
-  }
-  
-  .profile-avatar img {
-    width: 100%;
-    height: 100%;
+    cursor: pointer;
     object-fit: cover;
-  }
-  
-  .profile-dropdown {
+    margin-left: 400px;
+}
+
+.profile-avatar img:hover{
+    padding: 5px;
+}
+
+.dropdown-menu {
+    display: none; /* Hide by default */
     position: absolute;
-    top: 50px;
+    top: 100%; /* Position below the profile avatar */
     right: 0;
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-    z-index: 1000;
-  }
-  
-  .profile-dropdown a {
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    color: #333;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown a:hover {
-    background-color: #f9f9f9;
-  }
-  
-  
-  /* Navbar dropdown styling */
-  .navbar .dropdown {
-    position: relative;
-  }
-  
-  .navbar .dropdown-toggle {
-    background: none;
-    border: none;
-    color: brown;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .navbar .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #f9c284;
-    border: 2px solid #ff9e03;
-    border-radius: 5px;
+    min-width: 160px; /* Set a minimum width for dropdown */
+    z-index: 1001; /* Ensure it appears above other elements */
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block; /* Make links block-level to occupy full width */
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .navbar .dropdown-menu.show {
-    display: block;
-  }
-  
-  .navbar .dropdown-item {
-    color: brown;
-    padding: 8px 12px;
     text-decoration: none;
-    display: block;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .navbar .dropdown-item:hover {
-    background-color: #f8e2c8;
-    border-radius: 5px;
-  }
-  
-  .dialog-overlay {
+    color: #00796b; /* Professional link color */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
+
+.dropdown-item {
+    padding: 10px;
+}
+
+.dialog-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .dialog-content {
-    background-color: #f8e2c8;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.dialog-content {
+    background: white;
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
-    max-width: 80%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Maximum width for the dialog */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
+    background-color: #f8e2c8;
+}
+
+.dialog-content h2 {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif; /* Modern font for headings */
     color: brown;
-  }
-  
-  .dialog-content button{
-    border-radius: 5px;
-    background-color: #f9c284;
-    color:brown;
-  }
+}
+
+.dialog-content p {
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif; /* Clean font for paragraphs */
+    color: brown;
+}
+
+.dialog-content button {
+    background-color: #00796b; /* Match button color with theme */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif; /* Clean font for button */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dialog-content button:hover {
+    background-color: #004d40; /* Darker shade on hover */
+}

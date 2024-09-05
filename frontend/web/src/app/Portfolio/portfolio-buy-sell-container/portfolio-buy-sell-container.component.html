@@ -32,8 +32,8 @@
  
     <button (click)="sellStock()">Sell Stock</button>
   </div>
-  </div> 
-  <div class="stock-list">
+</div>
+  <!-- <div class="stock-list">
     <h3>Portfolio Holdings</h3>
     <div class="stock-list-container">
       <div class="stock-item" *ngFor="let stock of stocks" >
@@ -46,6 +46,37 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="portfolio-holdings">
+    <h3>Portfolio Holdings</h3>
+    <table class="stock-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Stock Name</th>
+          <th>Avg. Buy Price</th>
+          <th>Quantity</th>
+          <th>Returns</th>
+          <th>Price</th>
+          <th>%1D</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stocks" class="stock-row">
+         
+          <td>
+            <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
+            {{ stock.stockName }}
+          </td>
+          <td>{{ stock.stockSymbol }}</td>
+          <td>{{ stock.avgBuyPrice | currency }}</td>
+          <td>{{ stock.holdings }}</td>
+          <td>{{ stock.returns | currency}}</td>
+          <td>{{ stock.currentPrice | currency}}</td>
+          <td>{{ stock.priceChangePercentage24h}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <app-portfolio-transactions [stockId]="stockId" [id]="portfolioId"></app-portfolio-transactions>
