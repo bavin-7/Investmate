@@ -57,9 +57,11 @@ export class PortfolioService {
     });
   }
 
-  getTransactions(portfolioId: string, stockId: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/getTransactions`, {
-      params: { portfolioId, stockId }
-    });
-  }
+ // Adjusted to reflect the response structure
+getTransaction(portfolioId: string, stockId: string): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/getTransaction`, {
+    params: { portfolioId, stockId }
+  });
+}
+
 }

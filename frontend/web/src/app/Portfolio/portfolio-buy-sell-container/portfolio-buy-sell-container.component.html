@@ -32,20 +32,7 @@
     <button (click)="sellStock()">Sell Stock</button>
   </div>
 </div>
-  <!-- <div class="stock-list">
-    <h3>Portfolio Holdings</h3>
-    <div class="stock-list-container">
-      <div class="stock-item" *ngFor="let stock of stocks" >
-        <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
-        <div class="stock-details">
-          <h4 class="stock-name">{{ stock.stockName }} ({{ stock.stockSymbol }})</h4>
-          <p class="stock-quantity">Holdings: {{ stock.holdings }}</p>
-          <p class="stock-buy-price">Avg. Buy Price: {{ stock.avgBuyPrice | currency }}</p>
-          <p class="stock-returns">Returns: {{ stock.returns | currency }}</p> 
-        </div>
-      </div>
-    </div>
-  </div> -->
+
   <div class="portfolio-holdings">
     <h3>Portfolio Holdings</h3>
     <table class="stock-table">
@@ -61,7 +48,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let stock of stocks" class="stock-row">
+        <tr *ngFor="let stock of stocks" (click)="viewTransactions(stock.stockId)" class="stock-row" >
          
           <td>
             <img [src]="stock.stockImage" alt="{{ stock.stockName }}" class="stock-image" />
@@ -69,7 +56,7 @@
           </td>
           <td>{{ stock.stockSymbol }}</td>
           <td>{{ stock.avgBuyPrice | currency }}</td>
-          <td>{{ stock.holdings }}</td>
+          <td>{{stock.quantity}}</td>
           <td>{{ stock.returns | currency}}</td>
           <td>{{ stock.currentPrice | currency}}</td>
           <td>{{ stock.priceChangePercentage24h}}</td>

@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'portfolio/delete/:id', component: DeletePortfolioComponent }, // Delete Portfolio route
     { path: 'portfolio/alert', component: PortfolioAlertComponent }, // Portfolio Alert route
     { path: 'portfolio/buy-sell/:id', component: PortfolioBuySellContainerComponent },
-    { path: 'portfolio/:id/transactions/:stockId', component: PortfolioTransactionsComponent },
+    { path: 'transactions/:portfolioId/:stockId', component: PortfolioTransactionsComponent },
     { path: 'learn', component: LearnComponent }
 
 ];

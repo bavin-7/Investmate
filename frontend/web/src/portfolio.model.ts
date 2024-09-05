@@ -24,6 +24,10 @@ export interface PortfolioStock {
 }
 
 
+export interface TransactionsDetails {
+  transactions: PortfolioTransaction[]; // Assuming the backend returns an array of transactions inside a "transactions" field
+}
+
 export interface PortfolioTransaction {
   transactionId: string;
   portfolioId: string;

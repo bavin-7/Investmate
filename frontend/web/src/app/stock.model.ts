@@ -7,13 +7,13 @@ export interface Stock {
     stockName: any;
     stockSymbol: any;
     stockImage: any;
-    currentPrice: any;
+    // currentPrice: any;
     priceChangePercentage24h: any;
     id: string;
     symbol: string;
     name: string;
     image: string;
-    current_price: number;
+    current_price: any;
     market_cap: number;
     market_cap_rank: number;
     fully_diluted_valuation: number;

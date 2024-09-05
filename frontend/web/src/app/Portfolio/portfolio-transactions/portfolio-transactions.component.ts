@@ -1,12 +1,18 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit,} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
-import { PageEvent } from '@angular/material/paginator';
+import { PortfolioService } from '../../portfolio-service';
+
+export interface PortfolioTransaction {
+  type: string;
+  createdAt: number;
+  quantity: number;
+  amount: number;
+}
  
 @Component({
   selector: 'app-portfolio-transactions',
@@ -17,63 +23,33 @@ import { PageEvent } from '@angular/material/paginator';
     CommonModule, MatProgressSpinnerModule, MatPaginatorModule, MatTableModule, DatePipe
   ],
 })
-export class PortfolioTransactionsComponent implements OnInit,OnChanges {
- 
-  formattedReturns: string = '';
- 
-  stockData: any;
-  transactionsList: any[] = [];
-  holdings: number = 0;
-  returns: number = 0;
-  loading: boolean = true;
-  page: number = 0;
-  rowsPerPage: number = 30;
-  @Input() stockId!: string;
-  @Input() id!: string;
- 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
- 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      console.log(params)
-      // this.stockId = params['stockId'];
-      // this.id = params['id'];
-      this.getAllStocks();
-      this.formattedReturns = this.calculateFormattedReturns(this.returns);
-    });
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getAllStocks();
-  }
-  async getAllStocks() {
-    try {
-      const response = await this.http.get<any>(
-        'http://localhost:9001/portfolio/getTransaction',
-        { params: { portfolioId: this.id, stockId: this.stockId } }
-      ).toPromise();
- 
-      this.stockData = response.stock;
-      this.transactionsList = response.transactionsDetailsList;
-      this.holdings = response.holdings;
-      this.returns = response.returns;
-      this.loading = false;
-    } catch (error) {
-      console.error('Error fetching stock data', error);
-      this.loading = false;
+export class PortfolioTransactionsComponent implements OnInit {
+ portfolioId!: string;
+ stockId!: string;
+  transactions: PortfolioTransaction[] = [];
+
+  constructor(private portfolioService: PortfolioService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((data)=>{
+      this.portfolioId = data.get('portfolioId')??"";
+      this.stockId = data.get('stockId')??"";
+    })
+    if (this.portfolioId && this.stockId) {
+      this.loadTransactions();
     }
   }
- 
-  handleChangePage(event: any, newPage: number) {
-    this.page = newPage;
-  }
- 
-  handleChangeRowsPerPage(event: any) {
-    this.rowsPerPage = +event.target.value;
-    this.page = 0;
-  }
- 
- 
-  calculateFormattedReturns(value: number): string {
-    return `-${Math.abs(value).toFixed(2)}`;
+
+  loadTransactions(): void {
+    this.portfolioService.getTransaction(this.portfolioId, this.stockId).subscribe(
+      (response) => {
+        // Extract the transactions array from the response
+        this.transactions = response.transactionsDetailsList; // Adjusted to reflect the response structure
+        console.log('Transactions:', this.transactions); // Check if transactions are logged correctly
+      },
+      (error) => {
+        console.error('Error fetching transactions:', error);
+      }
+    );
   }
 }
