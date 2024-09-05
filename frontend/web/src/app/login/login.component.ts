@@ -37,11 +37,12 @@ export class LoginComponent {
             sessionStorage.setItem('userId', userId); // Store user ID in sessionStorage
             this.router.navigate(['/dashboard']); // Redirect to dashboard
           } else {
-            // this.loginError = 'Invalid email or password. Please try again.';
+            //alert('Invalid email or password. Please try again.');
             console.error('Invalid email or password. Please try again.');
           }
         },
         error: (error) => {
+          alert('Invalid email or password. Please try again.');
           console.error('Error logging in:', error);
           this.loginError = 'An error occurred during login. Please try again later.';
         }

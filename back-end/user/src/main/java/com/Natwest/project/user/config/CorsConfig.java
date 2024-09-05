@@ -13,7 +13,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200") // Add the origin of your React application
+                .allowedOrigins("http://localhost:4200") // Add the origin of your Angular application
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
 
